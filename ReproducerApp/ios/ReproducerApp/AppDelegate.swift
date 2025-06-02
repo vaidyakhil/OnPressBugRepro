@@ -38,6 +38,12 @@ class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
     self.bundleURL()
   }
 
+  // this is so we can use MessageQueue to spy
+  // on bridge comms
+   override func bridgelessEnabled() -> Bool {
+     return false
+   } 
+
   override func bundleURL() -> URL? {
 #if DEBUG
     RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
